@@ -45,23 +45,27 @@
                 style="@style/Gray.Button"
                 android:id="@+id/btn_clear"
                 android:onClick="onNumberClick"
-                android:text="AC" />
+                android:text="@string/AC" />
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Gray.Button"
+                android:id="@+id/btn_plus_or_minus"
+                android:onClick="onOperationClick"
                 android:layout_marginHorizontal="18dp"
-                android:text="+/-" />
+                android:text="@string/plus_or_minus" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_marginEnd="18dp"
                 style="@style/Gray.Button"
-                android:text="%"/>
+                android:id="@+id/btn_percent"
+                android:onClick="onOperationClick"
+                android:text="@string/percent"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Orange.Button"
                 android:id="@+id/btn_division"
                 android:onClick="onOperationClick"
-                android:text="/"/>
+                android:text="@string/division"/>
 
         </LinearLayout>
         <LinearLayout
@@ -75,27 +79,27 @@
                 style="@style/Gray.Dark.Button"
                 android:id="@+id/btn_seven"
                 android:onClick="onNumberClick"
-                android:text="7" />
+                android:text="@string/seven" />
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Gray.Dark.Button"
                 android:layout_marginHorizontal="18dp"
                 android:id="@+id/btn_eight"
                 android:onClick="onNumberClick"
-                android:text="8" />
+                android:text="@string/eight" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_marginEnd="18dp"
                 style="@style/Gray.Dark.Button"
                 android:id="@+id/btn_nine"
                 android:onClick="onNumberClick"
-                android:text="9"/>
+                android:text="@string/nine"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Orange.Button"
                 android:id="@+id/btn_multiplication"
                 android:onClick="onOperationClick"
-                android:text="x"/>
+                android:text="@string/multiplication"/>
 
         </LinearLayout>
         <LinearLayout
@@ -109,27 +113,27 @@
                 style="@style/Gray.Dark.Button"
                 android:id="@+id/btn_four"
                 android:onClick="onNumberClick"
-                android:text="4" />
+                android:text="@string/four" />
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Gray.Dark.Button"
                 android:layout_marginHorizontal="18dp"
                 android:id="@+id/btn_five"
                 android:onClick="onNumberClick"
-                android:text="5" />
+                android:text="@string/five" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_marginEnd="18dp"
                 style="@style/Gray.Dark.Button"
                 android:id="@+id/btn_six"
                 android:onClick="onNumberClick"
-                android:text="6"/>
+                android:text="@string/six"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Orange.Button"
                 android:id="@+id/btn_minus"
                 android:onClick="onOperationClick"
-                android:text="-"/>
+                android:text="@string/minus"/>
 
         </LinearLayout>
         <LinearLayout
@@ -143,27 +147,27 @@
                 style="@style/Gray.Dark.Button"
                 android:id="@+id/btn_one"
                 android:onClick="onNumberClick"
-                android:text="1" />
+                android:text="@string/one" />
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Gray.Dark.Button"
                 android:layout_marginHorizontal="18dp"
                 android:id="@+id/btn_two"
                 android:onClick="onNumberClick"
-                android:text="2" />
+                android:text="@string/two" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_marginEnd="18dp"
                 style="@style/Gray.Dark.Button"
                 android:id="@+id/btn_three"
                 android:onClick="onNumberClick"
-                android:text="3"/>
+                android:text="@string/three"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Orange.Button"
                 android:id="@+id/btn_plus"
                 android:onClick="onOperationClick"
-                android:text="+"/>
+                android:text="@string/plus"/>
 
         </LinearLayout>
         <LinearLayout
@@ -180,18 +184,21 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:id="@+id/btn_zero"
-                android:text="0" />
+                android:onClick="onNumberClick"
+                android:text="@string/zero" />
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Gray.Dark.Button"
+                android:id="@+id/btn_point"
                 android:layout_marginHorizontal="18dp"
-                android:text="." />
+                android:onClick="onNumberClick"
+                android:text="@string/point" />
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Orange.Button"
                 android:id="@+id/btn_equal"
-                android:onClick="onEqualClick"
-                android:text="="/>
+                android:onClick="onOperationClick"
+                android:text="@string/equal"/>
 
         </LinearLayout>
 

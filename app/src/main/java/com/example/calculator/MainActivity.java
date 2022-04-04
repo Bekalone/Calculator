@@ -8,11 +8,12 @@ import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
-    private Integer oldNumber, newNumber;
+    private Double oldNumber, newNumber;
     private String operator;
     private Boolean isOperationClick;
     private Boolean equal = true;
@@ -28,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
     public void onNumberClick(View view) {
         switch (view.getId()) {
             case R.id.btn_zero:
-                setNumber("0");
+                if (textView.getText().toString().equals("0")) {
+                    textView.setText("0");
+                } else {
+                    textView.append("0");
+                }
                 break;
             case R.id.btn_one:
                 setNumber("1");
@@ -57,10 +62,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_nine:
                 setNumber("9");
                 break;
+            case R.id.btn_point:
+                if (!textView.getText().toString().contains(".")) {
+                    textView.append(".");
+                }
+                break;
             case R.id.btn_clear:
                 textView.setText("0");
-                oldNumber = 0;
-                newNumber = 0;
+                oldNumber = 0.0;
+                newNumber = 0.0;
                 break;
         }
 
@@ -78,87 +88,130 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public void onOperationClick(View view) {
         switch (view.getId()) {
             case R.id.btn_plus:
                 operator = "+";
-                oldNumber = Integer.parseInt(textView.getText().toString());
+                oldNumber = Double.parseDouble(textView.getText().toString());
                 isOperationClick = true;
                 break;
             case R.id.btn_minus:
                 operator = "-";
-                oldNumber = Integer.parseInt(textView.getText().toString());
+                oldNumber = Double.parseDouble(textView.getText().toString());
                 isOperationClick = true;
                 break;
             case R.id.btn_multiplication:
                 operator = "*";
-                oldNumber = Integer.parseInt(textView.getText().toString());
+                oldNumber = Double.parseDouble(textView.getText().toString());
                 isOperationClick = true;
+                break;
             case R.id.btn_division:
                 operator = "/";
-                oldNumber = Integer.parseInt(textView.getText().toString());
+                oldNumber = Double.parseDouble(textView.getText().toString());
                 isOperationClick = true;
-        }
-    }
+                break;
+            case R.id.btn_percent:
+                operator = "/";
+                oldNumber = Double.parseDouble(textView.getText().toString());
+                Double resullt = Double.valueOf(0);
+                isOperationClick = true;
+                switch (operator) {
+                    case "/":
+                        resullt = oldNumber / 100;
+                        break;
+                }
+                textView.setText(new DecimalFormat("##.#######").format(resullt));
+                break;
+            case R.id.btn_plus_or_minus:
+                operator = "+/-";
+                oldNumber = Double.parseDouble(textView.getText().toString());
+                Double resultS = Double.valueOf(0);
+                isOperationClick = true;
+                switch (operator) {
+                    case "+/-":
+                        resultS = oldNumber *= -1;
+                        break;
+                }
+                textView.setText(new DecimalFormat("##.#######").format(resultS));
+                break;
+            case R.id.btn_equal:
+                newNumber = Double.parseDouble(textView.getText().toString());
+                Double result = Double.valueOf(0);
+                switch (operator) {
+                    case "+":
+                        result = oldNumber + newNumber;
+                        break;
+                    case "-":
+                        result = oldNumber - newNumber;
+                        break;
+                    case "x":
+                        result = oldNumber * newNumber;
+                        break;
+                    case "/":
+                        result = oldNumber / newNumber;
+                        break;
+                    case "//":
+                        result = oldNumber / 100;
+                        break;
+                    /*case "+":
+                        newNumber = Double.parseDouble(textView.getText().toString());
+                        if (equal) {
+                            result = oldNumber + newNumber;
+                            textView.setText(result.toString());
+                            equal = false;
+                        } else if (isOperationClick == false) {
+                            result = oldNumber + newNumber;
+                            textView.setText(result.toString());
+                        } else {
+                            textView.getText();
+                        }
+                        isOperationClick = true;
+                        break;
+                    case "-":
+                        newNumber = Double.parseDouble(textView.getText().toString());
+                        if (equal) {
+                            result = oldNumber - newNumber;
+                            textView.setText(result.toString());
+                            equal = false;
+                        } else if (isOperationClick == false) {
+                            result = oldNumber - newNumber;
+                            textView.setText(result.toString());
+                        } else {
+                            textView.getText();
+                        }
+                        isOperationClick = true;
+                        break;
+                    case "*":
+                        newNumber = Double.parseDouble(textView.getText().toString());
+                        if (equal) {
+                            result = oldNumber * newNumber;
+                            textView.setText(result.toString());
+                            equal = false;
+                        } else if (isOperationClick == false) {
+                            result = oldNumber * newNumber;
+                            textView.setText(result.toString());
+                        } else {
+                            textView.getText();
+                        }
+                        isOperationClick = true;
+                        break;
+                    case "/":
+                        newNumber = Double.parseDouble(textView.getText().toString());
+                        if (equal) {
+                            result = oldNumber / newNumber;
+                            textView.setText(result.toString());
+                            equal = false;
+                        } else if (isOperationClick == false) {
+                            result = oldNumber / newNumber;
+                            textView.setText(result.toString());
+                        } else {
+                            textView.getText();
+                        }
 
-    public void onEqualClick(View view) {
-        Integer result;
-        switch (operator) {
-            case "+":
-                newNumber = Integer.parseInt(textView.getText().toString());
-                if (equal) {
-                    result = oldNumber + newNumber;
-                    textView.setText(result.toString());
-                    equal = false;
-                } else if (isOperationClick == false) {
-                    result = oldNumber + newNumber;
-                    textView.setText(result.toString());
-                } else {
-                    textView.getText();
+                        isOperationClick = true;
+                        break;*/
                 }
-                isOperationClick = true;
-                break;
-            case "-":
-                newNumber = Integer.parseInt(textView.getText().toString());
-                if (equal) {
-                    result = oldNumber - newNumber;
-                    textView.setText(result.toString());
-                    equal = false;
-                } else if (isOperationClick == false) {
-                    result = oldNumber - newNumber;
-                    textView.setText(result.toString());
-                } else {
-                    textView.getText();
-                }
-                isOperationClick = true;
-                break;
-            case "*":
-                newNumber = Integer.parseInt(textView.getText().toString());
-                if (equal) {
-                    result = oldNumber * newNumber;
-                    textView.setText(result.toString());
-                    equal = false;
-                } else if (isOperationClick == false) {
-                    result = oldNumber * newNumber;
-                    textView.setText(result.toString());
-                } else {
-                    textView.getText();
-                }
-                isOperationClick = true;
-                break;
-            case "/":
-                newNumber = Integer.parseInt(textView.getText().toString());
-                if (equal) {
-                    result = oldNumber / newNumber;
-                    textView.setText(result.toString());
-                    equal = false;
-                } else if (isOperationClick == false) {
-                    result = oldNumber / newNumber;
-                    textView.setText(result.toString());
-                } else {
-                    textView.getText();
-                }
+                textView.setText(new DecimalFormat("##.#######").format(result));
                 isOperationClick = true;
                 break;
         }
